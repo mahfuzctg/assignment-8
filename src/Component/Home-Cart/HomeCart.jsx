@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Cart from '../Cart/Cart';
 
 const HomeCart = () => {
     const [carts, setCart] = useState([]);
@@ -8,11 +9,19 @@ const HomeCart = () => {
          .then(data => setCart(data))
     }, []);
     return (
-        <div>
-            <h3>this is home cart {carts.length}</h3>
-           {
-            carts.map(cart => <HomeCart></HomeCart>)
-           }
+        
+        <div className='main row py-5'>
+           <div className='rightCart col-md-8 col-sm-12'>
+                 
+                   {
+                    carts.map(cart => <Cart key={cart.id} 
+                    cart={cart}
+                    ></Cart>)
+                   }
+           </div>
+          <div className='SideCart col-md-4 col-sm-12'>
+                 Bookmark
+          </div>
         </div>
     );
 };
